@@ -19,7 +19,7 @@ export class PhoneService {
     public readonly validatorService: ValidatorService,
     public readonly awsS3Service: AwsS3Service,
   ) {}
-  async create(phone: AddPhoneDto): Promise<PhoneEntity> {
+  async create(phone: AddPhoneDto): Promise<AddPhoneDto> {
     return this.phoneRepository.create(phone);
   }
   // find all phones
@@ -27,11 +27,11 @@ export class PhoneService {
     return await this.phoneRepository.find();
   }
   // find a specific phone by phone id
-  async findOneById(id: string): Promise<PhoneResponseDto> {
+  async findOneById(id: string): Promise<PhoneEntity> {
     return await this.phoneRepository.findOne({ where: { id } });
   }
   // add a new phone
-  async save(phone: PhoneEntity): Promise<PhoneResponseDto> {
+  async save(phone: AddPhoneDto): Promise<PhoneEntity> {
     return await this.phoneRepository.save(phone);
   }
   // delete a phone using phone id
@@ -39,16 +39,16 @@ export class PhoneService {
     return await this.phoneRepository.delete(id);
   }
   // update phone information by id
-  async update(id: string, phone: UpdatePhoneDto): Promise<any> {
-    return await this.phoneRepository.update({ id }, phone);
+  async update(phone: Partial<UpdatePhoneDto>): Promise<any> {
+    return await this.phoneRepository.update({ id: phone.id }, phone);
   }
 
-  /**
-   * Find single phone
-   */
-  findOne(findData: FindConditions<PhoneEntity>): Promise<PhoneEntity> {
-    return this.phoneRepository.findOne(findData);
-  }
+  // /**
+  //  * Find single phone
+  //  */
+  // findOne(findData: FindConditions<PhoneEntity>): Promise<PhoneEntity> {
+  //   return this.phoneRepository.findOne(findData);
+  // }
 
   /**
    * Find phones with keywords
@@ -58,6 +58,7 @@ export class PhoneService {
     pageOptionsDto: PhonesPageOptionsDto,
   ): Promise<PageDto<PhoneResponseDto>> {
     const queryBuilder = this.phoneRepository.createQueryBuilder('phone');
+    console.log('adadf');
     const { items, pageMetaDto } = await queryBuilder
       .searchByString(pageOptionsDto.q, ['name', 'description'])
       .paginate(pageOptionsDto);

@@ -8,7 +8,7 @@ import {
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { LoginPayloadDto, SignInDto, SignUpDto, UserResponseDto } from './dto';
-import { AdminRoleEnum, UserRoleEnum } from '../../common/constants/enum';
+import { AdminRoleEnum, UserRoleEnum } from '../../common/constants';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IFile } from '../../common/interfaces';
 import { ApiFile } from '../../common/decorators/swagger.schema';

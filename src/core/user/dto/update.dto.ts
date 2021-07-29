@@ -23,9 +23,9 @@ export class UpdateDto {
   @ApiProperty({
     description: 'fullName',
   })
-  @IsString()
+  @IsString({ message: 'the value must be a string' })
   @IsOptional()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'email cannot be empty' })
   @Trim()
   fullName: string;
 

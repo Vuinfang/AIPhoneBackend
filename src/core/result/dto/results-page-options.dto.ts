@@ -1,3 +1,3 @@
-import { PageOptionsDto } from '../../../common/constants/dto';
+import { PageOptionsDto } from '../../../common/constants';
 
 export class ResultsPageOptionsDto extends PageOptionsDto {}

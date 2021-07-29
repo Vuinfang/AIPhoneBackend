@@ -10,7 +10,7 @@ export class PhoneEntity extends AbstractEntity<PhoneResponseDto> {
   price: number;
   @Column()
   description: string;
-  @Column()
+  @Column({ default: null })
   discount: string;
   @Column()
   stock: number;

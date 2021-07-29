@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { AbstractDto } from '../../../common/constants/dto';
+import { AbstractDto } from '../../../common/constants';
 import { ResultEntity } from '../result.entity';
 
 export class ResultResponseDto extends AbstractDto {

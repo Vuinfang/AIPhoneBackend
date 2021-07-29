@@ -1,8 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 import type { AbstractEntity } from '../entity/abstract.entity';
+import { IsString } from 'class-validator';
 
 export class AbstractDto {
+  @IsString({ message: 'the value must be a string' })
   @ApiProperty()
   id: string;
 

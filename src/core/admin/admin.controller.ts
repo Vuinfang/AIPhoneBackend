@@ -89,15 +89,12 @@ export class AdminController {
     status: HttpStatus.FORBIDDEN,
     description: 'Forbidden resource - no access',
   })
-  @ApiHeader({
-    name: 'authorization',
-    required: true,
-    description: 'need token',
-  })
-  // @UseGuards(RolesGuard)
-  // @UseGuards(JwtAuthGuard)
-  // @Roles(UserRoleEnum.ADMIN)
-  @Auth(AdminRoleEnum.ADMIN)
+  // @ApiHeader({
+  //   name: 'authorization',
+  //   required: true,
+  //   description: 'need token',
+  // })
+  // @Auth(AdminRoleEnum.ADMIN)
   @Get('findAll')
   getUsers(
     @Query(new ValidationPipe({ transform: true }))
